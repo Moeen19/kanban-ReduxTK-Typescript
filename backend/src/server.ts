@@ -11,7 +11,8 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express();
-const port: number | undefined = process.env.PORT;
+const port: number = parseInt(process.env.PORT) || 5000
+
 connectDB();
 app.use(cors({
   origin: 'https://kanban-redux-tk-typescript.vercel.app',
