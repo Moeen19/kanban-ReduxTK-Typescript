@@ -11,7 +11,7 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express();
-const port: number = parseInt(process.env.PORT) || 5000
+const port: number = parseInt(process.env.PORT as string) || 5000
 
 connectDB();
 app.use(cors({
