@@ -10,14 +10,13 @@ import cookieParser from "cookie-parser";
 import cors from 'cors';
 dotenv.config();
 const app = express();
-const port = 5000;
+const port = process.env.PORT;
 connectDB();
 app.use(cors({
     origin: 'https://kanban-redux-tk-typescript.vercel.app',
     credentials: true,
     methods: ['DELETE', 'PUT', 'GET', 'POST'],
 }));
-// comment
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
