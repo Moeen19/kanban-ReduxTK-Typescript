@@ -1,7 +1,7 @@
 import { Response } from "express";
 import jwt, { Secret } from "jsonwebtoken"
 import mongoose from "mongoose";
-const secret: Secret = process.env.ACCESS_TOKEN_SECRET
+const secret: Secret = process.env.ACCESS_TOKEN_SECRET || 'DefaultSecret'
 
 const generateToken = (res: Response, userId: mongoose.Types.ObjectId) => {
     const token: string = jwt.sign({ userId }, secret , {

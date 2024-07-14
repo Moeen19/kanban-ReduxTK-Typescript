@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import mongoose from "mongoose";
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const connectionString = process.env.MONGO_URI || '';
     try {
-        const conn = yield mongoose.connect(process.env.MONGO_URI, {
+        const conn = yield mongoose.connect(connectionString, {
             serverSelectionTimeoutMS: 5000, // Increase the timeout as needed
             socketTimeoutMS: 45000, // Increase the socket timeout as needed
         });
