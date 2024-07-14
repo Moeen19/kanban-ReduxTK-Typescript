@@ -25,11 +25,13 @@ const protect = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body, 'asdfjklj')
   
   token = req.body.token;
+
+  const secret = process.env.ACCESS_TOKEN_SECRET || "DefaultSecret"
   
   if (token) {
     console.log(token, 'token recieved')
     try {
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      const decoded = jwt.verify(token, secret);
       console.log(decoded)
       if(isJwt(decoded)) {
         const user = await User.findById(decoded.userId as JwtPayload).select("-password -__v -createdAt -updatedAt");
