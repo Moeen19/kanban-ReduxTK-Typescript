@@ -9,10 +9,10 @@ interface GlobalLayoutProps {
   children: ReactNode
 }
 
-// export const metadata = {
-//   title: "Todo Kanban",
-//   description: "Todo Kanban but with typescript, redux toolkit and rtk query.",
-// };
+export const metadata = {
+  title: "Todo Kanban",
+  description: "Todo Kanban but with typescript, redux toolkit and rtk query.",
+};
 
 export default function RootLayout({ children }: GlobalLayoutProps) {
   return (
