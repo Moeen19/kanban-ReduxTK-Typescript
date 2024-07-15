@@ -29,8 +29,7 @@ export default function RootLayout({ children }: GlobalLayoutProps) {
       </head>
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
         {children}
-        <Main />
-        <NextScript />
+       
       </body>
     </html>
   );
