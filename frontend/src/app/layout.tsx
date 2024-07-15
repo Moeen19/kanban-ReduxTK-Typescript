@@ -20,6 +20,8 @@ export default function RootLayout({ children }: GlobalLayoutProps) {
       <head>
         <title>Todo Kanban</title>
         <meta property="og:title" content="Todo Kanban" />
+        <meta property="og:description" content="MERN-Todo project but with Typescript, Redux Toolkit and RTK Query." />
+        <meta property="og:image" content="/ogImg.png" />
       </head>
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
         {children}
