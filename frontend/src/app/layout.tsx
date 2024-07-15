@@ -12,20 +12,12 @@ interface GlobalLayoutProps {
 export const metadata = {
   title: "Todo Kanban",
   description: "Todo Kanban but with typescript, redux toolkit and rtk query.",
+  image: "https://kanban-redux-tk-typescript.vercel.app/ogImg.png",
 };
 
 export default function RootLayout({ children }: GlobalLayoutProps) {
   return (
     <html lang="en">
-      {/* <head>
-        <title>Todo Kanban</title>
-        <meta name="description" content="Todo project but with Typescript, Redux Toolkit and RTK Query." />
-        <meta property="og:title" content="Todo Kanban" />
-        <meta property="og:description" content="Todo project but with Typescript, Redux Toolkit and RTK Query." />
-        <meta property="og:image" content="https://kanban-redux-tk-typescript.vercel.app/ogImg.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kanban-redux-tk-typescript.vercel.app/" />
-      </head> */}
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
         {children}
       </body>
