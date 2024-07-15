@@ -18,6 +18,7 @@ app.use(cors({
   origin: 'https://kanban-redux-tk-typescript.vercel.app',
   credentials: true,
   methods: ['DELETE', 'PUT', 'GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 // Body Parser Middleware
