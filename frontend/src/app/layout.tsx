@@ -12,13 +12,21 @@ interface GlobalLayoutProps {
 export const metadata = {
   title: "Todo Kanban",
   description: "Todo Kanban but with typescript, redux toolkit and rtk query.",
-  image: "https://kanban-redux-tk-typescript.vercel.app/ogImg.png"
+  openGraph: {
+    images: [
+      {
+        url: "https://nextjs.org/og.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: GlobalLayoutProps) {
   return (
     <html lang="en">
-      <Head>
+      {/* <Head>
         <title>Todo Kanban</title>
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
@@ -27,7 +35,7 @@ export default function RootLayout({ children }: GlobalLayoutProps) {
         <meta property="og:image:height" content="600"/>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kanban-redux-tk-typescript.vercel.app/" />
-      </Head>
+      </Head> */}
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
         {children}
       </body>
