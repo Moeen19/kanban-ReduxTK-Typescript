@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import connectDB from "./db/connect.js"
 import todoRoutes from "./routes/todoRoutes.js"
 import logger from "./middleware/logger.js";
@@ -20,6 +20,11 @@ app.use(cors({
   methods: ['DELETE', 'PUT', 'GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://kanban-redux-tk-typescript.vercel.app')
+  next()
+})
 
 // Body Parser Middleware
 app.use(express.json());

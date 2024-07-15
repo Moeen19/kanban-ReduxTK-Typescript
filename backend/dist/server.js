@@ -18,6 +18,10 @@ app.use(cors({
     methods: ['DELETE', 'PUT', 'GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://kanban-redux-tk-typescript.vercel.app');
+    next();
+});
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
