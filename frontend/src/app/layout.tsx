@@ -20,7 +20,7 @@ export default function RootLayout({ children }: GlobalLayoutProps) {
       <Head>
         <title>Todo Kanban</title>
         <meta name="description" content="Todo project but with Typescript, Redux Toolkit and RTK Query." />
-        <meta property="og:title" content="Todo" />
+        <meta property="og:title" content="Todo Kanban" />
         <meta property="og:description" content="Todo project but with Typescript, Redux Toolkit and RTK Query." />
         <meta property="og:image" content="https://kanban-redux-tk-typescript.vercel.app/ogImg.png" />
         <meta property="og:type" content="website" />
