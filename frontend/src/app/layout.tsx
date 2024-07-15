@@ -31,16 +31,19 @@ export const metadata = {
 export default function RootLayout({ children }: GlobalLayoutProps) {
   return (
     <html lang="en">
-      {/* <Head>
-        <title>Todo Kanban</title>
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:image" content={metadata.image} />
-        <meta property="og:image:width" content="800"/>
-        <meta property="og:image:height" content="600"/>
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kanban-redux-tk-typescript.vercel.app/" />
-      </Head> */}
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={metadata.openGraph.title} />
+        <meta property="og:description" content={metadata.openGraph.description} />
+        <meta property="og:image" content={metadata.openGraph.images[0].url} />
+        <meta property="og:image:width" content={metadata.openGraph.images[0].width.toString()} />
+        <meta property="og:image:height" content={metadata.openGraph.images[0].height.toString()} />
+        <meta property="og:image:alt" content={metadata.openGraph.images[0].alt} />
+        <meta property="og:url" content={metadata.openGraph.url} />
+        <meta property="og:type" content={metadata.openGraph.type} />
+      </Head>
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
         {children}
       </body>
