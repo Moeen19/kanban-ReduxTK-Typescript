@@ -15,7 +15,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: "https://nextjs.org/og.png",
+        url: "https://kanban-redux-tk-typescript.vercel.app/ogImg.png",
         width: 800,
         height: 600,
       },
