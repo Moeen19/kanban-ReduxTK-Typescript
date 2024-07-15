@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }: GlobalLayoutProps) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <title>Todo Kanban</title>
         <meta name="description" content="Todo project but with Typescript, Redux Toolkit and RTK Query." />
         <meta property="og:title" content="Todo Kanban" />
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: GlobalLayoutProps) {
         <meta property="og:image" content="https://kanban-redux-tk-typescript.vercel.app/ogImg.png" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kanban-redux-tk-typescript.vercel.app/" />
-      </Head>
+      </head>
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
         {children}
       </body>
