@@ -13,14 +13,19 @@ export const metadata = {
   title: "Todo Kanban",
   description: "Todo Kanban but with typescript, redux toolkit and rtk query.",
   openGraph: {
+    title: "Todo Kanban",
+    description: "Todo Kanban but with typescript, redux toolkit and rtk query.",
     images: [
       {
         url: "https://kanban-redux-tk-typescript.vercel.app/ogImg.png",
         width: 800,
         height: 600,
-      },
+        alt: "Todo Kanban Image"
+      }
     ],
-  },
+    url: "https://kanban-redux-tk-typescript.vercel.app/",
+    type: "website"
+  }
 };
 
 export default function RootLayout({ children }: GlobalLayoutProps) {
