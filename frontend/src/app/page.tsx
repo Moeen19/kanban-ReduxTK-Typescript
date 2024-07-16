@@ -27,7 +27,7 @@ const HomeContent = () => {
     router.refresh();
     setTimeout(() => {
       setLoader(false)
-    }, 1500)
+    }, 1000)
     const fetchTok = () => {
       let tok =
         typeof window !== undefined ? localStorage.getItem("jwt") : null;
@@ -47,8 +47,8 @@ const HomeContent = () => {
   }, [todos]);
 
   return (
-    <main className="">
-      <div className={`flex items-center ${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-500 justify-between`}>
+    <main className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-500`}>
+      <div className={`flex items-center justify-between`}>
         <h1 className="text-white pl-[110px] font-semibold text-[62px] mx-auto w-fit">
           Todo Kanban
         </h1>
