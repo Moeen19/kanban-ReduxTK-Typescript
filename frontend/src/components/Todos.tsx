@@ -42,7 +42,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
         setLoader(false)
       }, 1500)
     }
-  }, []);
+  }, [todos]);
 
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
   const doneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === true), [todos])
