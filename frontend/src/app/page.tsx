@@ -47,7 +47,7 @@ const HomeContent = () => {
   }, [todos]);
 
   return (
-    <main className={`${loader ? 'overflow-hidden' : ''}`}>
+    <main className={`${loader ? 'overflow-y-hidden' : ''}`}>
       {loader && <div className="flex gap-[5px] h-screen w-full items-center justify-center">
         <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
         <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
