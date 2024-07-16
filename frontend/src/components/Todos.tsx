@@ -179,7 +179,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                 </button>
               </div>
               <div>
-                {loader && <div className="flex gap-[5px] h-screen w-full items-center justify-center">
+                {loader && <div className="flex gap-[5px] items-center justify-center">
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
