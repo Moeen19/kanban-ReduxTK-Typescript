@@ -29,6 +29,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
   // const [notDoneTodos, setNotDoneTodos] = useState<Todo[]>([]);
   const [Upd, setUpd] = useState<boolean>(false);
   const [id, setId] = useState<string>("");
+  const [loader, setLoader] = useState<boolean>(true)
   // const [doneTodos, setDoneTodos] = useState<Todo[]>([]);
   const [addModel, setAddModel] = useState<boolean>(false);
   const [handledeleteTodo] = useDeleteTodoMutation()
@@ -174,6 +175,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   Add +
                 </button>
               </div>
+              <div>
               {!notDoneTodos.length && (
                 <div className="mx-auto w-fit my-[24px] font-semibold text-[24px]">
                   <h1>No Todos Here</h1>
@@ -237,6 +239,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   </Draggable>
                 );
               })}
+              </div>
               {provided.placeholder}
             </div>
           )}
