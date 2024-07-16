@@ -47,7 +47,7 @@ const HomeContent = () => {
   }, [todos]);
 
   return (
-    <main className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-500`}>
+    <main className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-300`}>
       <div className={`flex items-center justify-between`}>
         <h1 className="text-white pl-[110px] font-semibold text-[62px] mx-auto w-fit">
           Todo Kanban
