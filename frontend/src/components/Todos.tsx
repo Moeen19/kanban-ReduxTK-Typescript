@@ -189,12 +189,11 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
                 </div>) : (<div>
-                  {!notDoneTodos.length && (
+                  {!notDoneTodos.length ? (
                     <div className="mx-auto w-fit my-[24px] font-semibold text-[24px]">
                       <h1>No Todos Here</h1>
                     </div>
-                  )}
-                  {notDoneTodos.map((todo: Todo, index: number) => {
+                  ) : notDoneTodos.map((todo: Todo, index: number) => {
                     return (
                       <Draggable
                         draggableId={todo._id}
@@ -252,6 +251,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                       </Draggable>
                     );
                   })}
+
                 </div>)}
               </div>
               {provided.placeholder}
@@ -282,7 +282,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                     <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
                       <h1>No Todos Here</h1>
                     </div>
-                  ) :doneTodos.map((todo: Todo, index: number) => {
+                  ) : doneTodos.map((todo: Todo, index: number) => {
                     return (
                       <Draggable
                         index={index}
@@ -340,7 +340,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                       </Draggable>
                     );
                   })}
-                  
+
                 </div>)}
                 {provided.placeholder}
               </div>
