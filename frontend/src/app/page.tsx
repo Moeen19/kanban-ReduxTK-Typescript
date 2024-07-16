@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { useGetTodosQuery } from "./services/todoSlice";
 
-interface Todo{
+interface Todo {
   _id: string
   user: string
   __v: number
@@ -22,8 +22,12 @@ interface Todo{
 const HomeContent = () => {
   const router = useRouter();
   const [token, setToken] = useState<string | null>("");
+  const [loader, setLoader] = useState<boolean>(true)
   useEffect(() => {
     router.refresh();
+    setTimeout(() => {
+      setLoader(false)
+    }, 1500)
     const fetchTok = () => {
       let tok =
         typeof window !== undefined ? localStorage.getItem("jwt") : null;
@@ -44,13 +48,16 @@ const HomeContent = () => {
 
   return (
     <main className="">
-      <div className="flex items-center justify-between">
-        <h1 className="text-white pl-[110px] font-semibold text-[62px] mx-auto w-fit">
-          Todo Kanban
-        </h1>
-        <Logout todos={todos} token={token} />
-      </div>
-      <Todos todos={todos} token={token} />
+      {!loader && <div>
+        <div className="flex items-center justify-between">
+          <h1 className="text-white pl-[110px] font-semibold text-[62px] mx-auto w-fit">
+            Todo Kanban
+          </h1>
+          <Logout todos={todos} token={token} />
+        </div>
+        <Todos todos={todos} token={token} />
+      </div>}
+
     </main>
   );
 }
