@@ -41,13 +41,13 @@ export default function Todos({ todos = [], token }: TodoProps) {
   }, []);
 
   useEffect(() => {
-    if (todos) {
-      setTimeout(() => {
-        setLoader(false)
-      }, 1500)
+    if (todos.length === 0) {
+      setLoader(true);
+    } else {
+      setLoader(false);
     }
-  }, [todos])
-
+  }, [todos]);
+  
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
   const doneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === true), [todos])
 
