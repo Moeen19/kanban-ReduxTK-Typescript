@@ -27,7 +27,7 @@ const HomeContent = () => {
     router.refresh();
     setTimeout(() => {
       setLoader(false)
-    }, 3000)
+    }, 1000)
     const fetchTok = () => {
       let tok =
         typeof window !== undefined ? localStorage.getItem("jwt") : null;
