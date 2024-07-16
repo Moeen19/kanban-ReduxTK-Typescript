@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
+import { useState } from "react";
 import "./globals.css";
 import Head from "next/head";
 
@@ -29,6 +30,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: GlobalLayoutProps) {
+  const [loader, setLoader] = useState<boolean>(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)
+    }, 100000)
+  }, [])
   return (
     <html lang="en">
       <Head>
@@ -41,7 +48,14 @@ export default function RootLayout({ children }: GlobalLayoutProps) {
         <meta property="og:image:secure_url" content={metadata.openGraph.images[0].url} />
       </Head>
       <body className={`${inter.className} bg-[#2B187D] p-10`}>
-        {children}
+        {loader && <div className="flex gap-[5px] h-screen w-full items-center justify-center">
+          <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+          <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+          <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
+        </div>}
+        <div className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-300`}>
+          {children}
+        </div>
       </body>
     </html>
   );
