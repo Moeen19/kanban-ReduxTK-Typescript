@@ -39,7 +39,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
     toast.success("Welcome!");
     setTimeout(() => {
       setLoader(false)
-    }, 100000)
+    }, 1500)
   }, []);
 
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
@@ -267,70 +267,74 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   <h1 className="font-bold text-[30px] text-[#2B1887]">Done</h1>
                 </div>
               </div>
-              {!doneTodos.length && (
-                <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
-                  <h1>No Todos Here</h1>
-                </div>
-              )}
-              {doneTodos.map((todo: Todo, index: number) => {
-                return (
-                  <Draggable
-                    index={index}
-                    draggableId={todo._id}
-                    key={todo._id}
-                  >
-                    {(provided) => (
-                      <div
-                        {...provided.dragHandleProps}
-                        {...provided.draggableProps}
-                        ref={provided.innerRef}
-                        onClick={() => handleTodoClick(todo._id)}
-                        className="p-[24px] hover:bg-opacity-60 transtion ease-in-out duration-300 cursor-pointer mt-[24px] bg-[#F4F2FF] rounded-[12px]"
+              <div>
+                {loader && <div>
+                  {!doneTodos.length && (
+                    <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
+                      <h1>No Todos Here</h1>
+                    </div>
+                  )}
+                  {doneTodos.map((todo: Todo, index: number) => {
+                    return (
+                      <Draggable
+                        index={index}
+                        draggableId={todo._id}
+                        key={todo._id}
                       >
-                        <div>
-                          <div className="flex justify-between">
-                            <h1 className="font-bold text-[24px]">
-                              {todo.title}
-                            </h1>
-                            <img
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                deleteTodo(todo._id);
-                              }}
-                              className="trasition hover:cursor-pointer hover:-translate-y-1 trasition-all ease-in-out duration-300"
-                              src="/trash.svg"
-                            />
-                          </div>
-                          <p className="mt-[16px]">{todo.description}</p>
-                          <div className="mt-[26px] flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                              <div className="p-[8px] bg-[#ECB800] rounded-[8px] max-w-[35.76px] w-full">
-                                <h1 className="text-white font-semibold text-[16px] leading-[24px]">
-                                  Fri
+                        {(provided) => (
+                          <div
+                            {...provided.dragHandleProps}
+                            {...provided.draggableProps}
+                            ref={provided.innerRef}
+                            onClick={() => handleTodoClick(todo._id)}
+                            className="p-[24px] hover:bg-opacity-60 transtion ease-in-out duration-300 cursor-pointer mt-[24px] bg-[#F4F2FF] rounded-[12px]"
+                          >
+                            <div>
+                              <div className="flex justify-between">
+                                <h1 className="font-bold text-[24px]">
+                                  {todo.title}
                                 </h1>
-                              </div>
-                              <div className="flex items-center gap-3">
                                 <img
-                                  className="max-w-[24px] w-full max-h-[25px]"
-                                  src="/blue.svg"
-                                />
-                                <img
-                                  className="max-w-[24px] w-full max-h-[25px]"
-                                  src="/blue.svg"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    deleteTodo(todo._id);
+                                  }}
+                                  className="trasition hover:cursor-pointer hover:-translate-y-1 trasition-all ease-in-out duration-300"
+                                  src="/trash.svg"
                                 />
                               </div>
-                            </div>
-                            <div className="text-[24px] leading-[32px] text-[#2B1887]">
-                              {doneTodos.indexOf(todo) + 1}
+                              <p className="mt-[16px]">{todo.description}</p>
+                              <div className="mt-[26px] flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                  <div className="p-[8px] bg-[#ECB800] rounded-[8px] max-w-[35.76px] w-full">
+                                    <h1 className="text-white font-semibold text-[16px] leading-[24px]">
+                                      Fri
+                                    </h1>
+                                  </div>
+                                  <div className="flex items-center gap-3">
+                                    <img
+                                      className="max-w-[24px] w-full max-h-[25px]"
+                                      src="/blue.svg"
+                                    />
+                                    <img
+                                      className="max-w-[24px] w-full max-h-[25px]"
+                                      src="/blue.svg"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="text-[24px] leading-[32px] text-[#2B1887]">
+                                  {doneTodos.indexOf(todo) + 1}
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
-                );
-              })}
-              {provided.placeholder}
+                        )}
+                      </Draggable>
+                    );
+                  })}
+                </div>}
+                {provided.placeholder}
+              </div>
             </div>
           )}
         </Droppable>
