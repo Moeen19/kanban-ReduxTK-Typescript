@@ -42,11 +42,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
 
   useEffect(() => {
     setTimeout(() => {
-      if(todos.length) {
-        setLoader(false)
-      } else if (todos.length === 0) {
-        setLoader(false)
-      }
+      setLoader(false)
     }, 1500)
   }, [todos]);
 
@@ -282,12 +278,11 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
                 </div>}
                 {!loader && (<div>
-                  {!doneTodos.length && (
+                  {!doneTodos.length ? (
                     <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
                       <h1>No Todos Here</h1>
                     </div>
-                  )}
-                  {doneTodos.map((todo: Todo, index: number) => {
+                  ) :doneTodos.map((todo: Todo, index: number) => {
                     return (
                       <Draggable
                         index={index}
@@ -345,6 +340,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                       </Draggable>
                     );
                   })}
+                  
                 </div>)}
                 {provided.placeholder}
               </div>
