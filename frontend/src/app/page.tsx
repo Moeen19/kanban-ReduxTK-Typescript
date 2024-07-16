@@ -49,9 +49,9 @@ const HomeContent = () => {
   return (
     <main className=''>
       {loader && <div className="flex gap-[5px] fixed inset-0 m-auto">
-        <div className='h-4 w-4 bg-black rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-        <div className='h-4 w-4 bg-black rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-        <div className='h-4 w-4 bg-black rounded-full animate-bounce'></div>
+        <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+        <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+        <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
       </div>}
       <div className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-300`}>
         <div className={`flex items-center justify-between`}>
