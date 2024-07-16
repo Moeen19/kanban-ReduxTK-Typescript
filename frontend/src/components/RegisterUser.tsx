@@ -22,6 +22,7 @@ function RegisterUser({ token }: tokenInterface) {
   const [registerUser] = useRegisterUserMutation()
   const [passMatch, setpassMatch] = useState(false);
   const router = useRouter();
+  const [loader, setLoader] = useState<boolean>(true)
   const [loginInfo, setLoginInfo] = useState<LoginInfoInterface>({
     name: "",
     email: "",
@@ -30,6 +31,9 @@ function RegisterUser({ token }: tokenInterface) {
   });
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)
+    }, 700)
     if (token) {
       router.push("/");
     }
@@ -57,7 +61,7 @@ function RegisterUser({ token }: tokenInterface) {
   };
 
   return (
-    <div>
+    <div className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-300`}>
       <h1 className="text-white font-semibold text-[62px] mx-auto w-fit">
         Todo Kanban
       </h1>

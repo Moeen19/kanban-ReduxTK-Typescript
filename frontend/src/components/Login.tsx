@@ -18,7 +18,7 @@ export default function Login() {
     router.refresh()
     setTimeout(() => {
       setLoader(false)
-    }, 1000)
+    }, 700)
     token = typeof window ? localStorage.getItem("jwt") : null;
     if (token) {
       router.push("/");
