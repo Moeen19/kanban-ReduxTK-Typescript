@@ -18,7 +18,7 @@ interface Todo {
 
 interface TodoProps {
   token: string | null
-  todos?: Todo[] 
+  todos?: Todo[]
 }
 
 interface DragDropFunc {
@@ -34,14 +34,17 @@ export default function Todos({ todos = [], token }: TodoProps) {
   const [addModel, setAddModel] = useState<boolean>(false);
   const [handledeleteTodo] = useDeleteTodoMutation()
   const [handleUpdateStatus] = useUpdateTodoStatusMutation();
-  
+
   useEffect(() => {
     toast.success("Welcome!");
+    setTimeout(() => {
+      setLoader(false)
+    }, 1000)
   }, []);
-  
+
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
   const doneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === true), [todos])
-  
+
   // useEffect(() => {
   //   if (token) {
   //     const notDone: Todo[] = todos.filter((item) => {
@@ -57,7 +60,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
   //     // setNotDoneTodos(notDone);
   //   }
   // }, [todos]);
-  
+
   const handleTodoClick = (todo: string): void => {
     setId(todo);
     setAddModel(true);
@@ -176,69 +179,74 @@ export default function Todos({ todos = [], token }: TodoProps) {
                 </button>
               </div>
               <div>
-              {!notDoneTodos.length && (
-                <div className="mx-auto w-fit my-[24px] font-semibold text-[24px]">
-                  <h1>No Todos Here</h1>
-                </div>
-              )}
-              {notDoneTodos.map((todo: Todo, index: number) => {
-                return (
-                  <Draggable
-                    draggableId={todo._id}
-                    key={todo._id}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <div
-                        {...provided.dragHandleProps}
-                        {...provided.draggableProps}
-                        ref={provided.innerRef}
-                        onClick={() => handleTodoClick(todo._id)}
-                        className="p-[24px] hover:bg-opacity-60 transtion ease-in-out duration-300 cursor-pointer mt-[24px] bg-[#F4F2FF] rounded-[12px]"
-                      >
-                        <div>
-                          <div className="flex justify-between">
-                            <h1 className="font-bold text-[24px]">
-                              {todo.title}
-                            </h1>
-                            <img
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                deleteTodo(todo._id);
-                              }}
-                              className="trasition hover:cursor-pointer hover:-translate-y-1 trasition-all ease-in-out duration-300"
-                              src="/trash.svg"
-                            />
-                          </div>
-                          <p className="mt-[16px]">{todo.description}</p>
-                          <div className="mt-[26px] flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                              <div className="p-[8px] bg-[#ECB800] rounded-[8px] max-w-[35.76px] w-full">
-                                <h1 className="text-white font-semibold text-[16px] leading-[24px]">
-                                  Fri
-                                </h1>
-                              </div>
-                              <div className="flex items-center gap-3">
-                                <img
-                                  className="max-w-[24px] w-full max-h-[25px]"
-                                  src="/orange.svg"
-                                />
-                                <img
-                                  className="max-w-[24px] w-full max-h-[25px]"
-                                  src="/gray.svg"
-                                />
-                              </div>
+                {loader && <div className="flex gap-[5px] h-screen w-full items-center justify-center">
+                  <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                  <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                  <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
+                </div>}
+                {!notDoneTodos.length && (
+                  <div className="mx-auto w-fit my-[24px] font-semibold text-[24px]">
+                    <h1>No Todos Here</h1>
+                  </div>
+                )}
+                {notDoneTodos.map((todo: Todo, index: number) => {
+                  return (
+                    <Draggable
+                      draggableId={todo._id}
+                      key={todo._id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          {...provided.dragHandleProps}
+                          {...provided.draggableProps}
+                          ref={provided.innerRef}
+                          onClick={() => handleTodoClick(todo._id)}
+                          className="p-[24px] hover:bg-opacity-60 transtion ease-in-out duration-300 cursor-pointer mt-[24px] bg-[#F4F2FF] rounded-[12px]"
+                        >
+                          <div>
+                            <div className="flex justify-between">
+                              <h1 className="font-bold text-[24px]">
+                                {todo.title}
+                              </h1>
+                              <img
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  deleteTodo(todo._id);
+                                }}
+                                className="trasition hover:cursor-pointer hover:-translate-y-1 trasition-all ease-in-out duration-300"
+                                src="/trash.svg"
+                              />
                             </div>
-                            <div className="text-[24px] leading-[32px] text-[#2B1887]">
-                              {notDoneTodos.indexOf(todo) + 1}
+                            <p className="mt-[16px]">{todo.description}</p>
+                            <div className="mt-[26px] flex items-center justify-between">
+                              <div className="flex items-center gap-4">
+                                <div className="p-[8px] bg-[#ECB800] rounded-[8px] max-w-[35.76px] w-full">
+                                  <h1 className="text-white font-semibold text-[16px] leading-[24px]">
+                                    Fri
+                                  </h1>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <img
+                                    className="max-w-[24px] w-full max-h-[25px]"
+                                    src="/orange.svg"
+                                  />
+                                  <img
+                                    className="max-w-[24px] w-full max-h-[25px]"
+                                    src="/gray.svg"
+                                  />
+                                </div>
+                              </div>
+                              <div className="text-[24px] leading-[32px] text-[#2B1887]">
+                                {notDoneTodos.indexOf(todo) + 1}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-                  </Draggable>
-                );
-              })}
+                      )}
+                    </Draggable>
+                  );
+                })}
               </div>
               {provided.placeholder}
             </div>
