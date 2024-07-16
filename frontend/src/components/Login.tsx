@@ -9,12 +9,16 @@ import { useLoginUserMutation } from "@/app/services/userSlice";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
   const [incorrect, setIncorrect] = useState(false)
+  const [loader, setLoader] = useState<boolean>(true)
+  const router = useRouter();
   const [loginUser] = useLoginUserMutation()
   let token: string | null;
   useEffect(() => {
     router.refresh()
+    setTimeout(() => {
+      setLoader(false)
+    }, 1000)
     token = typeof window ? localStorage.getItem("jwt") : null;
     if (token) {
       router.push("/");
@@ -38,7 +42,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className={`${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-300`}>
       <ToastContainer />
       <h1 className="text-white font-semibold text-[62px] mx-auto w-fit">
         Todo Kanban
