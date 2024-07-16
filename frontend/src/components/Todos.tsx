@@ -189,7 +189,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
                 </div>) : (<div>
-                  {!notDoneTodos.length ? (
+                  {notDoneTodos.length === 0 ? (
                     <div className="mx-auto w-fit my-[24px] font-semibold text-[24px]">
                       <h1>No Todos Here</h1>
                     </div>
