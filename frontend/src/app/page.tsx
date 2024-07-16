@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { useGetTodosQuery } from "./services/todoSlice";
 
-interface Todo {
+interface Todo{
   _id: string
   user: string
   __v: number
@@ -48,16 +48,13 @@ const HomeContent = () => {
 
   return (
     <main className="">
-      {!loader && <div>
-        <div className="flex items-center justify-between">
-          <h1 className="text-white pl-[110px] font-semibold text-[62px] mx-auto w-fit">
-            Todo Kanban
-          </h1>
-          <Logout todos={todos} token={token} />
-        </div>
-        <Todos todos={todos} token={token} />
-      </div>}
-
+      <div className={`flex items-center ${loader ? 'opacity-0' : 'opacity-100'} transition-all ease-in-out duration-500 justify-between`}>
+        <h1 className="text-white pl-[110px] font-semibold text-[62px] mx-auto w-fit">
+          Todo Kanban
+        </h1>
+        <Logout todos={todos} token={token} />
+      </div>
+      <Todos todos={todos} token={token} />
     </main>
   );
 }
