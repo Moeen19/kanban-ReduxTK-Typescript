@@ -42,7 +42,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
 
   useEffect(() => {
     setTimeout(() => {
-      if(todos) {
+      if(todos.length) {
         setLoader(false)
       }
     }, 1500)
