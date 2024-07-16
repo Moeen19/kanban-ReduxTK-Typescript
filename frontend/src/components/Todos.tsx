@@ -37,18 +37,16 @@ export default function Todos({ todos = [], token }: TodoProps) {
 
   useEffect(() => {
     toast.success("Welcome!");
-    
+    if(!todos) {
+      setTimeout(() => {
+        setLoader(false)
+      }, 1500)
+    }
   }, []);
 
-  
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
   const doneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === true), [todos])
-  useEffect(() => {
-    setTimeout(() => {
-      setLoader(false)
-    }, 1500)
-  }, [doneTodos, notDoneTodos])
-  
+
   // useEffect(() => {
   //   if (token) {
   //     const notDone: Todo[] = todos.filter((item) => {
