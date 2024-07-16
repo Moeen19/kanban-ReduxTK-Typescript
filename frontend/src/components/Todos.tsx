@@ -274,11 +274,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
                 </div>}
                 {!loader && (<div>
-                  {!doneTodos.length && (
-                    <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
-                      <h1>No Todos Here</h1>
-                    </div>
-                  )}
+
                   {doneTodos.map((todo: Todo, index: number) => {
                     return (
                       <Draggable
@@ -295,6 +291,11 @@ export default function Todos({ todos = [], token }: TodoProps) {
                             className="p-[24px] hover:bg-opacity-60 transtion ease-in-out duration-300 cursor-pointer mt-[24px] bg-[#F4F2FF] rounded-[12px]"
                           >
                             <div>
+                              {!doneTodos.length && (
+                                <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
+                                  <h1>No Todos Here</h1>
+                                </div>
+                              )}
                               <div className="flex justify-between">
                                 <h1 className="font-bold text-[24px]">
                                   {todo.title}
