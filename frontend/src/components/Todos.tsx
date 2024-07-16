@@ -39,7 +39,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
     toast.success("Welcome!");
     setTimeout(() => {
       setLoader(false)
-    }, 1000)
+    }, 100000)
   }, []);
 
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
