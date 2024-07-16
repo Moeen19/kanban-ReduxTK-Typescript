@@ -179,7 +179,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                 </button>
               </div>
               <div>
-                {loader && <div className="flex mt-[20px] gap-[5px] items-center justify-center">
+                {loader && <div className="flex my-[40px] gap-[5px] items-center justify-center">
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
@@ -268,7 +268,12 @@ export default function Todos({ todos = [], token }: TodoProps) {
                 </div>
               </div>
               <div>
-                {loader && <div>
+                {loader && <div className="flex my-[40px] gap-[5px] items-center justify-center">
+                  <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                  <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                  <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
+                </div>}
+                {!loader && (<div>
                   {!doneTodos.length && (
                     <div className="mx-auto w-fit my-[28px] font-semibold text-[24px]">
                       <h1>No Todos Here</h1>
@@ -332,7 +337,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                       </Draggable>
                     );
                   })}
-                </div>}
+                </div>)}
                 {provided.placeholder}
               </div>
             </div>
