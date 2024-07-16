@@ -41,13 +41,11 @@ export default function Todos({ todos = [], token }: TodoProps) {
   }, []);
 
   useEffect(() => {
-    if (todos.length === 0) {
-      setLoader(true);
-    } else {
-      setLoader(false);
-    }
+    setTimeout(() => {
+      setLoader(false)
+    }, 1500)
   }, [todos]);
-  
+
   const notDoneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === false), [todos])
   const doneTodos: Todo[] = useMemo(() => todos.filter((todo) => todo.isDone === true), [todos])
 
@@ -185,12 +183,12 @@ export default function Todos({ todos = [], token }: TodoProps) {
                 </button>
               </div>
               <div>
-                {loader && <div className="flex my-[40px] gap-[5px] items-center justify-center">
+
+                {loader ? (<div className="flex my-[40px] gap-[5px] items-center justify-center">
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.3s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce [animation-delay:-0.15s]'></div>
                   <div className='h-4 w-4 bg-white rounded-full animate-bounce'></div>
-                </div>}
-                {!loader && <div>
+                </div>) : (<div>
                   {!notDoneTodos.length && (
                     <div className="mx-auto w-fit my-[24px] font-semibold text-[24px]">
                       <h1>No Todos Here</h1>
@@ -254,7 +252,7 @@ export default function Todos({ todos = [], token }: TodoProps) {
                       </Draggable>
                     );
                   })}
-                </div>}
+                </div>)}
               </div>
               {provided.placeholder}
             </div>
