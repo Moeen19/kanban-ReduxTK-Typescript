@@ -44,6 +44,8 @@ export default function Todos({ todos = [], token }: TodoProps) {
     setTimeout(() => {
       if(todos.length) {
         setLoader(false)
+      } else if (todos.length === 0) {
+        setLoader(false)
       }
     }, 1500)
   }, [todos]);
